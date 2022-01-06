@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\Post;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
+{
+    public function search(Request $request){
+         
+        if($request->ajax()){
+          
+            $data=Post::where('id','like','%'.$request->search.'%')
+            ->orwhere('title','like','%'.$request->search.'%')
+            ->orwhere('description','like','%'.$request->search.'%')->get();
+            $output='';
+            // dd($data);
+            if(count($data)>0){
+                 
+                $output .='
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">title</th>
+                    <th scope="col">description</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                ';
+                foreach($data as $row)
+                
+                $output .='  <tr>
+                    <th scope="row">'.$row->id.'</th>
+                    <td>'.$row->title.'</td>
+                    <td>'.$row->descrpition.'</td>
+                    
+                  </tr>';
+                
+                
+             $output .='   </tbody>
+              </table>
+                ';
+            }else
+            
+            {
+                $output .="Aucun resultat";
+            }
+            return $output;
+        }
+
+    }
+}
