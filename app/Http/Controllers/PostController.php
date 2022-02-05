@@ -34,7 +34,7 @@ class PostController extends Controller
                 $output .='  <tr>
                     <th scope="row">'.$row->id.'</th>
                     <td>'.$row->title.'</td>
-                    <td>'.$row->descrpition.'</td>
+                    <td>'.$row->description.'</td>
                     
                   </tr>';
                 

@@ -13,9 +13,9 @@
                        <div class="col-lg-3"></div>
                        <div class="col-lg-6">
                             <div class="text-center text-danger">
-                                AutoComplete library
+                                le repertoire des miagistes
                             </div>
-                            <div class="form-group">search_list
+                            <div class="form-group">toutes les informations se trouves ici
                                 <h4 class="text-uppercase text-center">recherchez quelque chose</h4>
                                 <input type="text" name="search" id="search" class="form-control" onfocus="" value="">
                             </div>
