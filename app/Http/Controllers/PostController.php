@@ -7,35 +7,38 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function search(Request $request){
-         
+   
+     
         if($request->ajax()){
-          
+           
+          // 
             $data=Post::where('id','like','%'.$request->search.'%')
             ->orwhere('title','like','%'.$request->search.'%')
-            ->orwhere('description','like','%'.$request->search.'%')->get();
+            ->orwhere('description','like','%'.$request->search.'%')
+            ->get();
             $output='';
             // dd($data);
+            // dd($categorie);
             if(count($data)>0){
                  
                 $output .='
                 <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">title</th>
-                    <th scope="col">description</th>
+                 
                     
                   </tr>
                 </thead>
                 <tbody>
                 ';
+                //foreach($categorie as $cat) 
                 foreach($data as $row)
                 
                 $output .='  <tr>
-                    <th scope="row">'.$row->id.'</th>
+                  
                     <td>'.$row->title.'</td>
-                    <td>'.$row->description.'</td>
                     
+                   <td class="btn btn-primary text-dark" > <a href="'.route('articles',$row->id).'"> voir</a></td>
                   </tr>';
                 
                 
@@ -47,8 +50,31 @@ class PostController extends Controller
             {
                 $output .="Aucun resultat";
             }
+            
             return $output;
         }
 
     }
+
+    public function articles(Request $request){
+    $resultat= Post::where('description','like','%'.$request->description.'%')
+    ->orwhere('title','like','%'.$request->title.'%')
+    // ->orwhere('description','like','%'.$request->search.'%')
+    ->get();
+    // dd($resultat);
+      return view('articles')->with('resultat',$resultat);
+    }
+
+
+    public function recherche(){
+      
+        $search_text=$_GET['search'];
+        $resultat= Post::where('description','like','%'.$search_text.'%')
+        ->orwhere('title','like','%'.$search_text.'%')
+        //->orwhere('description','like','%'.$request->search.'%')
+        ->get();
+
+        return view('resultat', compact('resultat'));
+    }
 }
+

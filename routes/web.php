@@ -24,3 +24,5 @@ Route::get('search',[PostController::class,'search']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('articles/{id}',[PostController::class,'articles'])->name('articles');
+Route::get('resultat',[PostController::class,'recherche'])->name('recherche');
