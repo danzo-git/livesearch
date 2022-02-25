@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\CategoriePost;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -69,12 +70,27 @@ class PostController extends Controller
     public function recherche(){
       
         $search_text=$_GET['search'];
-        $resultat= Post::where('description','like','%'.$search_text.'%')
+    //     $resultat= Post::where('description','like','%'.$search_text.'%')
+    //     ->orwhere('title','like','%'.$search_text.'%')
+    // //  ->orwhere('categorie','like','%'.$search_text.'%')
+    //     ->get();
+        //dd($resultat);
+      //   if($search_text =="danzo"){
+      //   $result= Post::paginate(2);
+        
+      //  }
+      //  else{
+        $result=Post::join('categorie_posts','categorie_posts.id','=','posts.id_categorie')
+        ->where('description','like','%'.$search_text.'%')
         ->orwhere('title','like','%'.$search_text.'%')
-        //->orwhere('description','like','%'.$request->search.'%')
-        ->get();
+        ->orwhere('nom_categorie','like','%'.$search_text.'%')
+        ->paginate(2);
+      // }
 
-        return view('resultat', compact('resultat'));
+    
+     
+     
+        return view('resultat', compact('result','search_text'));
     }
 }
 
