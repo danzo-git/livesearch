@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,17 +16,20 @@
   
   <body>
     <header>
+      
       <nav>
         <ul id="nav_bar">
           <li class="nav-links" id="gmail"><a href="#">Gmail</a></li>
           <li class="nav-links"><a href="#">Images</a></li>
-          <li id="sign_in"><a href="#">Sign In</a></li>
+          {{-- <li id="sign_in"><a href="{{url('register')}}">Sign In</a></li> --}}
+          {!! !Auth::user()? "<li id='sign_in'><a href='/register'>Sign In</a></li>":'Already connected  '.Auth::user()->name!!}
         </ul>  
       </nav>  
+      {{-- @include('navigation-menu') --}}
     </header>  
-    
+  
     <!-- GOOGLE IMG -->  
-    <div class="google ">
+    <div class="google offset-lg-5 ">
       <a href="#" id="google_logo"><img  src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/455/6847633455_6d892ce2-4585-415a-a21a-395ac074dfed.png?cb=1645270253"/></a>
     </div>
     
@@ -302,3 +306,4 @@ footer ul a:hover {
 </script>
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> --}}
 </html>
+</x-app-layout>

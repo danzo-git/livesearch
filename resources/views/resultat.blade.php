@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>computer engineering mutex concept - Google Search</title>
+    <title>Denzel-Search</title>
     <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
@@ -11,10 +11,10 @@
 <body>
     <div id="header">
         <div id="topbar">
-            <img  src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/455/6847633455_6d892ce2-4585-415a-a21a-395ac074dfed.png?cb=1645270253" width="180"/>
+            <img  class=" d-none" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/455/6847633455_6d892ce2-4585-415a-a21a-395ac074dfed.png?cb=1645270253"  width="180"/>
            <form  method="get"  action="{{route('recherche')}}">
             <div id="searchbar" type="text">
-                <input id="searchbartext" type="text" value="{{old('$search_text')}}" name="search" type="search" />
+                <input id="searchbartext" type="text" value="{{old('$search_text')}}" class="form-contro" name="search" type="search" />
                 <button id="searchbarmic">
                     <img src="images/googlemic.png" />
                 </button>
@@ -61,7 +61,7 @@
          <p id="searchresultsnumber">environ  {{$i}} resultat( trouvé en 0.56 seconds) </p>
         {{--  --}}
         @foreach ($result as $item)
-        <div class="searchresult">
+        <div class="searchresult ">
             <a href="">  <h2> {{$item->title}}</h2></a>
             <a>https://miage.org/wiki/Lock_(computer_science)</a> <button>▼</button>
             <p>{{$item->description}}</p>
