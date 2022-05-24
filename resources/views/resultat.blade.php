@@ -62,11 +62,11 @@
         {{--  --}}
         @foreach ($result as $item)
         <div class="searchresult ">
-            <a href="">  <h2> {{$item->title}}</h2></a>
+            <a href="{{route('document',$item->id)}}">  <h2> {{$item->title}}</h2></a>
             <a>https://miage.org/wiki/Lock_(computer_science)</a> <button>▼</button>
             <p>{{$item->description}}</p>
             <p> {{$item->categorie->nom_categorie}}</p>
-        </div>
+        {{-- </!div> --}}
 
         @endforeach
         

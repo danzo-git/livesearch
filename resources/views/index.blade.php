@@ -22,7 +22,7 @@
           <li class="nav-links" id="gmail"><a href="#">Gmail</a></li>
           <li class="nav-links"><a href="#">Images</a></li>
           {{-- <li id="sign_in"><a href="{{url('register')}}">Sign In</a></li> --}}
-          {!! !Auth::user()? "<li id='sign_in'><a href='/register'>Sign In</a></li>":'Already connected  '.Auth::user()->name!!}
+          {!! !Auth::user()? "<li id='sign_in'><a href='/register'>Sign In</a></li>":'Already connected  as '.Auth::user()->name!!}
         </ul>  
       </nav>  
       {{-- @include('navigation-menu') --}}

@@ -92,5 +92,14 @@ class PostController extends Controller
      
         return view('resultat', compact('result','search_text'));
     }
+
+    public function document($id){
+      if($id){
+        $doc=Post::find($id);
+        return view('document')->with('doc',$doc);
+      }
+     
+      
+    }
 }
 

@@ -44,7 +44,7 @@ class PostCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *  
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
